@@ -39,6 +39,10 @@
 
           <!-- Phần điều hướng đăng nhập/giỏ hàng hoặc tài khoản người dùng -->
           <div class="d-flex align-items-center justify-content-end col-3">
+            <NuxtLink to="/notification-user" class="nav-link">
+              <i class="fa-solid fa-bell bi-cart4"></i><span>Thông báo</span>
+            </NuxtLink>
+
             <NuxtLink to="/cart" class="nav-link">
               <i class="fa-solid fa-cart-shopping bi-cart4"></i><span>Giỏ hàng</span>
             </NuxtLink>

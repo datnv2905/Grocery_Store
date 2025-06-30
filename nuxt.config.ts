@@ -1,11 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // ssr: true,
+  //ssr: true,
   css: [
     '/assets/css/background.css', // Import file CSS bạn vừa tạo
     'bootstrap/dist/css/bootstrap.min.css',
   ],
-  plugins: [{ src: '~/plugins/bootstrap.client.ts', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/bootstrap.client.ts', mode: 'client' },
+    { src: '~/plugins/firebase.js', mode: 'client' } 
+  ],
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['usebootstrap', '@pinia/nuxt'],

@@ -60,8 +60,13 @@ const products = ref([]);
 const notifications = ref([]);
 const notificationDetails = ref([]);
 const isLoading = ref(true);
+
+
+const nuxtApp = useNuxtApp();
+
 // Hàm onMounted
 onMounted(async () => {
+  
   try {
     isLoading.value = true;
     products.value = await $fetch("https://localhost:7224/api/product/getall");
@@ -89,7 +94,23 @@ onMounted(async () => {
   }finally {
     isLoading.value = false;
   }
+
+  const token = await nuxtApp.$requestNotificationPermission();
+  if (token) {
+    console.log('FCM Token:', token);
+    const response = await $fetch('https://localhost:7224/api/firebase/register-token', {
+        method: 'POST',
+        body: {
+          token: token,
+        }
+      });
+    console.log(response);
+  } else {
+    console.log('Permission denied');
+  }
 });
+
+
 </script>
 
 <style scoped>
